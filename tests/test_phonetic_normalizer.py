@@ -131,3 +131,51 @@ def test_mixed_sentence_mapping():
     assert "mehnat" in out
     assert "inshaallah" in out
     assert "kamyabi" in out
+
+
+def test_empty_string_handling():
+    n = PhoneticNormalizer()
+    out = n.normalize("")
+    assert out == ""
+
+
+def test_code_mixed_urdu_english():
+    n = PhoneticNormalizer()
+    out = n.normalize("kia umead hai aur I hope it works")
+    assert "kya" in out
+    assert "umeed" in out
+    assert "hope" in out
+
+
+def test_consistency_multiple_runs():
+    n = PhoneticNormalizer()
+    text = "Mehanat karo inshallah kamyabee"
+    out1 = n.normalize(text)
+    out2 = n.normalize(text)
+    assert out1 == out2
+
+
+def test_anchor_tokens_preserved():
+    n = PhoneticNormalizer()
+    out = n.normalize("inshaallah mashaallah alhamdulillah")
+    assert all(token in out for token in ["inshaallah", "mashaallah", "alhamdulillah"])
+
+
+def test_long_text_performance():
+    n = PhoneticNormalizer()
+    long_text = " ".join(["kia umead"] * 1000)
+    out = n.normalize(long_text)
+    assert len(out) > 0
+
+
+def test_special_characters_handling():
+    n = PhoneticNormalizer()
+    out = n.normalize("kia? umead! inshallah...")
+    assert "kya" in out and "umeed" in out
+
+
+def test_case_insensitive_mapping():
+    n = PhoneticNormalizer()
+    out1 = n.normalize("INSHALLAH")
+    out2 = n.normalize("inshallah")
+    assert out1 == out2
