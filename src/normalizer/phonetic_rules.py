@@ -7,8 +7,8 @@ class RomanUrduPhoneticRules:
     def apply(self, token: str) -> str:
         value = token
 
-        # Repeated letters: pleeease -> please (keep at most 2)
-        value = re.sub(r"(.)\1{2,}", r"\1\1", value)
+        # Repeated letters: pleeease -> please (collapse long runs)
+        value = re.sub(r"(.)\1{2,}", r"\1", value)
 
         # Common folds
         value = value.replace("ph", "f")

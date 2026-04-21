@@ -17,8 +17,8 @@ class PhoneticNormalizer:
 
     canonical_map: Dict[str, str] = field(default_factory=lambda: dict(DEFAULT_CANONICAL_MAP))
     protected_tokens: Set[str] = field(default_factory=lambda: set(DEFAULT_PROTECTED_TOKENS))
-    similarity_threshold: float = 88.0
-    min_token_len: int = 3
+    similarity_threshold: float = 80.0
+    min_token_len: int = 2
     cleaner: Optional[TextCleaner] = None
     rules: Optional[RomanUrduPhoneticRules] = None
 
@@ -35,19 +35,24 @@ class PhoneticNormalizer:
         if len(token) < self.min_token_len or token in self.protected_tokens:
             return token
 
+        if token in self.canonical_map:
+            return self.canonical_map[token]
+
         phonetic = self.rules.apply(token)
 
         if phonetic in self.canonical_map:
             return self.canonical_map[phonetic]
-        if token in self.canonical_map:
-            return self.canonical_map[token]
 
         choices = list(self.canonical_map.keys())
         if not choices:
             return token
 
         match = process.extractOne(phonetic, choices, scorer=fuzz.ratio)
-        if match and match[1] >= self.similarity_threshold:
+        if (
+            match
+            and match[1] >= self.similarity_threshold
+            and abs(len(match[0]) - len(phonetic)) <= 2
+        ):
             return self.canonical_map.get(match[0], token)
         return token
 

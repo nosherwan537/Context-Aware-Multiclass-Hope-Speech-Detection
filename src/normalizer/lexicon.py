@@ -205,6 +205,57 @@ CANONICAL_MAP: Dict[str, str] = {
     "bate": "baat",
     "bat": "baat",
     "baath": "baat",
+
+    # ===== HIGH-FREQUENCY DATASET VARIANTS =====
+    "boht": "bohot",
+    "bhot": "bohot",
+    "bahot": "bohot",
+    "rahay": "raha",
+    "rahey": "raha",
+    "rhay": "raha",
+    "ziada": "zyada",
+    "ziyadah": "zyada",
+    "ziyadah": "zyada",
+    "kamyab": "kamyabi",
+    "kamyaab": "kamyabi",
+    "mushqil": "mushkil",
+    "hae": "hai",
+    "hy": "hai",
+    "han": "haan",
+    "hain": "hain",
+
+    # Prevent harmful fuzzy replacements
+    "ameen": "ameen",
+    "jahan": "jahan",
+    "jane": "jane",
+    "dein": "dein",
+    "dain": "dein",
+
+    # ===== COMMON FUNCTION-WORD VARIANTS =====
+    "main": "mein",
+    "mai": "mein",
+    "mn": "mein",
+    "me": "mein",
+    "mein": "mein",
+    "mujhe": "mujhe",
+    "mjhe": "mujhe",
+    "mje": "mujhe",
+    "mjy": "mujhe",
+    "mujhy": "mujhe",
+    "aap": "aap",
+    "app": "aap",
+    "ap": "aap",
+    "tum": "tum",
+    "tm": "tum",
+    "hum": "hum",
+    "hm": "hum",
+    "ke": "ke",
+    "kay": "ke",
+    "ky": "ke",
+    "ki": "ki",
+    "ko": "ko",
+    "kr": "kar",
+    "kar": "kar",
 }
 
 PROTECTED_TOKENS: Set[str] = {
@@ -232,6 +283,7 @@ PROTECTED_TOKENS: Set[str] = {
     "nai",
     "nahi",
     "haan",
+    "ameen",
 }
 
 ANCHOR_TOKENS: Set[str] = {
