@@ -1,6 +1,6 @@
 """
 Ablation runner — executes all remaining experiment runs for the paper table.
-
+ 
 Run order:
   3  hlsp_v2            normalizer + dual-head v2 (full)
   4  ablation_no_headA  normalizer + v2, Head A disabled (CLS fallback forced)
