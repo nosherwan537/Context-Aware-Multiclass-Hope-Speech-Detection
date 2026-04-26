@@ -33,3 +33,9 @@ checkpoints/
 
 # Logs
 *.log
+
+# Generated results (reproducible)
+results/
+
+# Personal/unrelated files
+*.pdf
