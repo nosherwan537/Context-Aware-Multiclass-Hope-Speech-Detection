@@ -1,7 +1,7 @@
 # Context-Aware Multiclass Hope Speech Detection in Roman Urdu
 ### Hybrid Lexical-Semantic Pipeline (HLSP) via Culturally-Guided Dual-Head XLM-RoBERTa
 
-> **FAST-NUCES Lahore — Semester Final Project + Research Paper | April 2026**
+> **NUST ISLAMABAD — Semester Final Project + Research Paper | April 2026**
 
 ---
 
@@ -239,7 +239,7 @@ If you use the Roman Urdu hope speech dataset or this codebase, please cite:
              via Hybrid Lexical-Semantic Pipeline},
   author  = {[Authors]},
   year    = {2026},
-  note    = {FAST-NUCES Lahore. Dataset transliterated from Nastaliq Urdu
+  note    = {NUST, ISLAMABAD. Dataset transliterated from Nastaliq Urdu
              using the Qalb transliteration model.}
 }
 ```
